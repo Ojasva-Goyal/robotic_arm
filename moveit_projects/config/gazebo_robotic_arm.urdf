@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="robotic_arm">
+    <link name="world" />
+    <link name="base_link">
+        <inertial>
+            <origin xyz="-0.0165803890468243 0.19282587000357 -3.51686307226709E-06" rpy="0 0 0" />
+            <mass value="4.34562331098434" />
+            <inertia ixx="0.0378086473040807" ixy="-3.54423084897061E-05" ixz="1.47714115379995E-07" iyy="0.0165363069227152" iyz="2.8578508167006E-07" izz="0.0441530515251821" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/base_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="base_joint" type="fixed">
+        <parent link="world" />
+        <child link="base_link" />
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.17" />
+    </joint>
+    <link name="centerbody">
+        <inertial>
+            <origin xyz="0.11652 -0.067747 0.40165" rpy="0 0 0" />
+            <mass value="1.8477" />
+            <inertia ixx="0.0013116" ixy="8.7743E-05" ixz="9.5889E-08" iyy="0.027618" iyz="-6.1622E-07" izz="0.026765" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/centerbody.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/centerbody.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="centerbody_to_base_link" type="prismatic">
+        <origin xyz="-0.039405 -0.40165 0.27038" rpy="-1.5708 0 0" />
+        <parent link="base_link" />
+        <child link="centerbody" />
+        <axis xyz="0 1 0" />
+        <limit lower="0.0" upper="0.25" effort="0" velocity="0.0" />
+        
+    </joint>
+    <link name="first_arm">
+        <inertial>
+            <origin xyz="-0.019164 -8.611E-09 -0.089614" rpy="0 0 0" />
+            <mass value="0.17171" />
+            <inertia ixx="0.00057866" ixy="8.762E-12" ixz="-2.0511E-05" iyy="0.00055337" iyz="-2.669E-11" izz="4.6257E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/first_arm.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/first_arm.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="first_arm_to_centerbody" type="revolute">
+        <origin xyz="0.33941 -0.058346 0.40165" rpy="-0.42159 0 1.5708" />
+        <parent link="centerbody" />
+        <child link="first_arm" />
+        <axis xyz="1 0 0" />
+        <limit lower="-3.53" upper="1.47" effort="300" velocity="3" />
+        
+    </joint>
+    <link name="second_arm">
+        <inertial>
+            <origin xyz="0.0026502383699763 -4.39800036333704E-07 -0.0918787391702446" rpy="0 0 0" />
+            <mass value="0.27447462799947" />
+            <inertia ixx="0.000225265050066937" ixy="1.15224178865899E-10" ixz="-2.07653673596782E-06" iyy="0.000194661915254966" iyz="-7.73675117611759E-10" izz="7.75592837627015E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/second_arm.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/second_arm.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="second_arm_to_first_arm" type="revolute">
+        <origin xyz="0 0 -0.15" rpy="-0.88283 0 0" />
+        <parent link="first_arm" />
+        <child link="second_arm" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.77" upper="3.55" effort="300" velocity="3" />
+        
+    </joint>
+    <link name="end_effector">
+        <inertial>
+            <origin xyz="0.000169458028733804 -0.0561750751662762 4.3695659512899E-07" rpy="0 0 0" />
+            <mass value="0.0635356282224037" />
+            <inertia ixx="2.6848836374279E-05" ixy="-1.44712372607126E-08" ixz="-1.38546760679811E-10" iyy="1.43981879560283E-05" iyz="-4.88567608943478E-10" izz="3.5579199056912E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/end_effector.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://robotic_arm/meshes/end_effector.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="end_to_second" type="revolute">
+        <origin xyz="0.0346 0 -0.15" rpy="3.1416 1.3157 -1.5708" />
+        <parent link="second_arm" />
+        <child link="end_effector" />
+        <axis xyz="0 1 0" />
+        <limit lower="-3.14" upper="0" effort="300" velocity="3" />
+    </joint>
+    <!-- base_joint -->
+    <!-- <transmission name="base_joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="base_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="base_joint_fixed">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission> -->
+    <!-- //centerbody_to_base_link -->
+    <transmission name="centerbody_to_base_link_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="centerbody_to_base_link">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="centerbody_to_base_link_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- //first_arm_to_centerbody -->
+    <transmission name="first_arm_to_centerbody_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="first_arm_to_centerbody">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="first_arm_to_centerbody_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- //second_arm_to_first_arm -->
+    <transmission name="second_arm_to_first_arm_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="second_arm_to_first_arm">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="second_arm_to_first_arm_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- //end_to_second -->
+    <transmission name="end_to_second_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="end_to_second">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="end_to_second_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+        <!-- <plugin name="gazebo_ros_control">
+            <robotNamespace>/</robotNamespace>
+        </plugin> -->
+    </gazebo>
+    <gazebo reference="centerbody">
+        <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="first_arm">
+        <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="second_arm">
+        <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="end_effector">
+        <selfCollide>true</selfCollide>
+    </gazebo>
+</robot>
+

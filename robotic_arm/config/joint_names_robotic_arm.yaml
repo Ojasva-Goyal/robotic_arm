@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'centerbody_to_base_link', 'first_arm_to_centerbody', 'second_arm_to_first_arm', 'end_to_second', ]

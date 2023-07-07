@@ -1,0 +1,16 @@
+controller_list:
+  - name: arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - centerbody_to_base_link
+      - first_arm_to_centerbody
+      - second_arm_to_first_arm
+      - end_to_second
+  - name: hand_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - end_to_second
