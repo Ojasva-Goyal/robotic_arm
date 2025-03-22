@@ -1,5 +1,5 @@
 # robotic_arm
-Robotic arm of P.N.T. Robotics &amp; Automation Solutions
+The robotic arm on which I worked on at P.N.T. Robotics &amp; Automation Solutions
 
 ## Steps to use this Robotic_Arm
 
